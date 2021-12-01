@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <span th:utext="${name}"></span><br>
+  <span th:text="${group}"> </span><br>
+  <span th:text="${variant}"></span>
+  <br><br>
+  <form method="get" action = "home/levelsList">
+      <input type="submit" value="Показать список">
+  </form>
+</body>
+</html>

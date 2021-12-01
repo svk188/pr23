@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta xmlns:th="http://www.thymeleaf.org">
+    <title>Levels</title>
+</head>
+<body>
+<form method="get" action="/home">
+    <input type="submit" value="Home">
+</form>
+<span>---------------------------------------------------------------------------------------------</span>
+
+<h1>Уровни</h1>
+<br/>
+<div>
+    <table border="2">
+        <tr>
+            <th>Complexity</th>
+            <th>Level Name</th>
+        </tr>
+        <tr th:each ="level : ${levels}">
+            <td th:utext="${level.complexity}">...</td>
+            <td th:utext="${level.levelName}">...</td>
+        </tr>
+    </table>
+</div><br>
+<form method="get" action="addLevel">
+    <input type="submit" value="Добавить уровень">
+</form>
+<form th:action="@{sortLevelCompl}"
+      th:object="${level}" method="POST">
+    <input type="submit" value="Sort by Compl" />
+</form>
+<br>
+<form th:action="@{sortLevelName}"
+      th:object="${level}" method="POST">
+    <input type="submit" value="Sort by Name" />
+</form>
+<form th:action="@{delLevel}"
+      th:object="${level}" method="POST">
+    <label>
+        <input type="text" th:field="*{levelName}" placeholder="Введите Level Name"/>
+    </label>
+    <input type="submit" value="Delete" />
+</form>
+<br/><br/>
+<span>---------------------------------------------------------------------------------------------</span>
+<h1>Игры</h1>
+<div>
+    <table border="2">
+        <tr>
+            <th>Name</th>
+            <th>Creation Date</th>
+        </tr>
+        <tr th:each ="game : ${games}">
+            <td th:utext="${game.name}">...</td>
+            <td th:utext="${game.creationDate}">...</td>
+        </tr>
+    </table>
+</div>
+<br>
+
+<form method="get" action="addGame">
+    <input type="submit" value="Добавить игру">
+</form>
+<form th:action="@{sortGameName}"
+      th:object="${level}" method="POST">
+    <input type="submit" value="Sort by Name" />
+</form>
+<form th:action="@{sortGameDate}"
+      th:object="${level}" method="POST">
+    <input type="submit" value="Sort by Date" />
+</form>
+<br>
+<form th:action="@{delGame}"
+      th:object="${game}" method="POST">
+    <label>
+        <input type="text" th:field="*{name}" placeholder="Введите name"/>
+    </label>
+    <input type="submit" value="Delete" />
+</form>
+
+</body>
+</html>

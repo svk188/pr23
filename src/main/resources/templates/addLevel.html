@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Добавить уровень</h1>
+<form method="get" action="/home">
+    <input type="submit" value="Home">
+</form>
+<br/><br/>
+<form th:action="@{addLevel}"
+      th:object="${newLevel}" method="POST">
+    Comlexity:
+    <label>
+        <input type="number" th:field="*{complexity}" />
+    </label>
+    <br>
+    Level Name:
+    <label>
+        <input type="text" th:field="*{levelName}" />
+    </label>
+    <br/><br/>
+    <input type="submit" value="Добавить" />
+</form>
+
+</body>
+</html>
